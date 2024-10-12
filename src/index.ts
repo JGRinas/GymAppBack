@@ -1,15 +1,17 @@
-import express from 'express';
-import mongoose from 'mongoose';
+import express, { Request, Response } from "express";
+import connectDB from "./config/database";
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT ?? 3000;
 
-mongoose.connect(process.env.MONGODB_URI as string)
-  .then(() => console.log('MongoDB Atlas connected'))
-  .catch(err => console.error('Database connection error:', err));
+app.use(express.json());
 
-app.get('/', (req, res) => res.send('API running...'));
+connectDB();
+
+app.get("/", (req: Request, res: Response) => {
+  res.send("API is running...");
+});
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });

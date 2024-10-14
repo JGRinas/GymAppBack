@@ -1,10 +1,10 @@
 import express, { Request, Response } from "express";
-import connectDB from "./config/database";
-import authRoutes from "./routes/auth.routes";
-import userRoutes from "./routes/user.routes";
-import planRoutes from "./routes/plan.routes";
-import exerciseRoutes from "./routes/exercise.routes";
-import routineRoutes from "./routes/routine.routes";
+import connectDB from "../src/config/database";
+import authRoutes from "../src/routes/auth.routes";
+import userRoutes from "../src/routes/user.routes";
+import planRoutes from "../src/routes/plan.routes";
+import exerciseRoutes from "../src/routes/exercise.routes";
+import routineRoutes from "../src/routes/routine.routes";
 import path from "path";
 
 const app = express();
@@ -38,3 +38,5 @@ app.get("/", (req: Request, res: Response) => {
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+export default app;

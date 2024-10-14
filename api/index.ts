@@ -6,10 +6,12 @@ import planRoutes from "../src/routes/plan.routes";
 import exerciseRoutes from "../src/routes/exercise.routes";
 import routineRoutes from "../src/routes/routine.routes";
 import path from "path";
+import cors from 'cors';
 
 const app = express();
 const PORT = process.env.PORT ?? 3000;
 
+app.use(cors());
 app.use(express.json());
 
 connectDB();

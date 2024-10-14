@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import connectDB from "./config/database";
+import authRoutes from "./routes/auth.routes";
 
 const app = express();
 const PORT = process.env.PORT ?? 3000;
@@ -7,6 +8,9 @@ const PORT = process.env.PORT ?? 3000;
 app.use(express.json());
 
 connectDB();
+
+//Auth
+app.use("/api/auth", authRoutes);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("API is running...");

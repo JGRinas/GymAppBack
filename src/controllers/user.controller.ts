@@ -20,34 +20,31 @@ export const getUserProfile = async (
   }
 };
 
-export const updateProfilePhoto = async (
+export const uploadProfilePhoto = async (
   req: Request,
   res: Response
 ): Promise<void> => {
   try {
-    const userId = (req as any).user.userId;
-    const photoPath = req.file?.path;
-
-    if (!photoPath) {
-      res.status(400).json({ message: "No photo uploaded" });
-      return;
-    }
+    const userId = req.body.userId;
+    const imageUrl = (req.file as any).path;
 
     const updatedUser = await UserModel.findByIdAndUpdate(
       userId,
-      { photo: photoPath },
+      { photo: imageUrl },
       { new: true }
     );
 
     if (!updatedUser) {
-      res.status(404).json({ message: "User not found" });
+      res.status(404).json({ message: "Usuario no encontrado" });
       return;
     }
 
     res
       .status(200)
-      .json({ message: "Profile photo updated", user: updatedUser });
+      .json({ message: "Foto de perfil actualizada", photo: imageUrl });
   } catch (error) {
-    res.status(500).json({ message: "Failed to update profile photo", error });
+    res
+      .status(500)
+      .json({ message: "Error al subir la foto de perfil", error });
   }
 };

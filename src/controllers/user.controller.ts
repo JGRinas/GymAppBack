@@ -26,16 +26,16 @@ export const updateProfilePhoto = async (
 ): Promise<void> => {
   try {
     const userId = (req as any).user.userId;
-    const { photo } = req.body;
+    const photoPath = req.file?.path;
 
-    if (!photo) {
-      res.status(400).json({ message: "Photo URL is required" });
+    if (!photoPath) {
+      res.status(400).json({ message: "No photo uploaded" });
       return;
     }
 
     const updatedUser = await UserModel.findByIdAndUpdate(
       userId,
-      { photo },
+      { photo: photoPath },
       { new: true }
     );
 
@@ -44,10 +44,9 @@ export const updateProfilePhoto = async (
       return;
     }
 
-    res.status(200).json({
-      message: "Profile photo updated successfully",
-      user: updatedUser,
-    });
+    res
+      .status(200)
+      .json({ message: "Profile photo updated", user: updatedUser });
   } catch (error) {
     res.status(500).json({ message: "Failed to update profile photo", error });
   }

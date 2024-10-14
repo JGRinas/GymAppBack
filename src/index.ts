@@ -3,6 +3,7 @@ import connectDB from "./config/database";
 import authRoutes from "./routes/auth.routes";
 import userRoutes from "./routes/user.routes";
 import planRoutes from "./routes/plan.routes";
+import path from "path";
 
 const app = express();
 const PORT = process.env.PORT ?? 3000;
@@ -10,6 +11,8 @@ const PORT = process.env.PORT ?? 3000;
 app.use(express.json());
 
 connectDB();
+
+app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
 //Auth
 app.use("/api/auth", authRoutes);

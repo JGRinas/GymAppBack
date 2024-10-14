@@ -12,4 +12,12 @@ export class UserRepository {
   async updateStatus(userId: string, status: "active" | "inactive") {
     return await UserModel.findByIdAndUpdate(userId, { status }, { new: true });
   }
+  
+  async updatePlan(userId: string, planId: string) {
+    return await UserModel.findByIdAndUpdate(
+      userId,
+      { plan: planId },
+      { new: true }
+    );
+  }
 }

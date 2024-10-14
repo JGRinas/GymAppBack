@@ -25,7 +25,7 @@ export const uploadProfilePhoto = async (
   res: Response
 ): Promise<void> => {
   try {
-    const userId = (req as any).user._id;
+    const userId = (req as any).user.userId;
     const imageUrl = (req.file as any).path;
 
     const updatedUser = await UserModel.findByIdAndUpdate(

@@ -74,10 +74,5 @@ Antes de levantar el proyecto, asegúrate de tener instalado:
 
 ---
 
-## Contribución
-Si deseas contribuir al proyecto, realiza un fork del repositorio, realiza tus cambios y envía un Pull Request. Agradecemos tus sugerencias y mejoras.
-
----
-
 ## Licencia
 Este proyecto está bajo la licencia MIT.

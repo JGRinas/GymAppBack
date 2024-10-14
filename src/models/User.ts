@@ -10,6 +10,7 @@ export interface IUser extends Document {
   role: "admin" | "coach" | "member";
   isVerified: boolean;
   status: "active" | "inactive";
+  photo?: string;
   createdAt: Date;
 }
 
@@ -23,6 +24,7 @@ const userSchema = new Schema<IUser>({
   role: { type: String, enum: ["admin", "coach", "member"], default: "member" },
   isVerified: { type: Boolean, default: false },
   status: { type: String, enum: ["active", "inactive"], default: "active" },
+  photo: { type: String, default: null },
   createdAt: { type: Date, default: Date.now },
 });
 

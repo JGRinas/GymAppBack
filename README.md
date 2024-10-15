@@ -53,6 +53,9 @@ Antes de levantar el proyecto, asegúrate de tener instalado:
    PORT=3000
    MONGO_URI=<tu_conexion_mongodb_atlas>
    JWT_SECRET=<tu_secreto_jwt>
+   CLOUDINARY_CLOUD_NAME=
+   CLOUDINARY_API_KEY=
+   CLOUDINARY_API_SECRET=
    ```
 
 4. **Levantar el Servidor:**
